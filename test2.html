@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Record</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$.ajax({url: "https://nmscgradschool.byethost16.com/api/api2.php", success: function(result){
+					var myArray = result.split("|");
+					var size = myArray.length - 1;					
+					var nsize = size / 3;
+					var row = "";
+					i=0;
+					f=1;
+					l=2;					
+					for(var x=0; x<nsize; x++){
+						row = row + "<tr><td>" + myArray[i] + "</td><td>" + myArray[f] + "</td><td>" + myArray[l] + "</td></tr>";
+						i=i+3;
+						f=f+3;
+						l=l+3;
+					}
+					$("#display").append(row);
+				}});				
+			});
+		</script>
+	</head>
+	<body>
+		<table id="display" border="1">
+			<tr>
+				<th>ID number</th>
+				<th>Firstname</th>
+				<th>Lastname</th>
+			</tr>
+		</table>
+	</body>
+</html>

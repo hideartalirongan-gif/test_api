@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Record</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$(document).ajaxStart(function(){
+					$("#wait").css("display", "block");
+				});
+				
+				$(document).ajaxComplete(function(){
+					$("#wait").css("display", "none");
+				});
+				
+				$.ajax({url: "https://nmscgradschool.byethost16.com/api/api3.php", success: function(result){
+					
+					var row="";
+					for(var x=0; x<result.length; x++){
+						row = row + "<tr><td>" + result[x].IDno + "</td><td>" + result[x].FName + "</td><td>" + result[x].LName + "</td></tr>";
+					}
+					$("#display").append(row);
+				}});				
+			});
+		</script>
+	</head>
+	<body>
+		<table id="display" border="1">
+			<tr>
+				<th>ID number</th>
+				<th>Firstname</th>
+				<th>Lastname</th>
+			</tr>
+		</table>
+		
+		<div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;"><img src='demo_wait.gif' width="64" height="64" /><br>Loading..</div>
+	</body>
+</html>
