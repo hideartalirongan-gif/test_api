@@ -14,12 +14,8 @@
 				});
 				
 				$.ajax({
-					headers: { "Accept": "application/json"},
-					url: "http://nmscgradschool.byethost16.com/api/api3.php", 
-					crossDomain: true,
-					beforeSend: function(xhr){
-                		xhr.withCredentials = true;
-          			},
+					// url: "http://nmscgradschool.byethost16.com/api/api3.php", 
+					url: "http://localhost:8080/api3.php", 
 					success: function(result){
 						var row="";
 						for(var x=0; x<result.length; x++){
@@ -44,5 +40,6 @@
 	</body>
 
 </html>
+
 
 
